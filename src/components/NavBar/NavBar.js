@@ -7,8 +7,6 @@ const NavBar = (props) => {
     <div>
       <Link to='/' className='NavBar-link'>HOME</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;
-      <Link to='/news' className='NavBar-link'>NEWS</Link>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
       <Link to='/reviews' className='NavBar-link'>REVIEWS</Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       <Link to='/games' className='NavBar-link'>GAMES</Link>
@@ -20,10 +18,6 @@ const NavBar = (props) => {
     :
     <div>
     <Link to='/' className='NavBar-link'>HOME</Link>
-    &nbsp;&nbsp;|&nbsp;&nbsp;
-    <Link to='/news' className='NavBar-link'>NEWS</Link>
-    &nbsp;&nbsp;|&nbsp;&nbsp;
-    <Link to='/reviews' className='NavBar-link'>REVIEWS</Link>
     &nbsp;&nbsp;|&nbsp;&nbsp;
     <Link to='/games' className='NavBar-link'>GAMES</Link>
     &nbsp;&nbsp;|&nbsp;&nbsp; 

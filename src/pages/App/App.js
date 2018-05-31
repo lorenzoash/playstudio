@@ -15,6 +15,7 @@ import API from './../../api/api.js';
 import PlayStudioNews from '../../pages/PlayStudioNews/PlayStudioNews'; 
 import NavBar from '../../components/NavBar/NavBar';
 import PlayStudioReviews from '../../pages/PlayStudioReviews/PlayStudioReviews'; 
+import PlayStudioGames from '../../pages/PlayStudioGames/PlayStudioGames';
 
 // import { parse } from 'querystring';
 
@@ -25,19 +26,48 @@ class App extends Component {
         isLoading: true,
         psNews: [],
         psReviews: [],
-        games: []
+        games: [],
+        userSearch: '',
+        searchGames: [],
+        searchResults: []
     }
   };
   componentDidMount() {
-    fetch('https://newsapi.org/v2/top-headlines?sources=ign&apiKey=1c8bd478e1e4431a848b713415a64ba4')
+    this.setState({user: userService.getUser()});
+
+    fetch('/api/news')
     .then(res => res.json())
-    .then(psNews => this.setState({
-      psNews
-    }))
-    .then(data => console.log(data))
-    .catch(err => console.log(err))
-    let user = userService.getUser();
-    this.setState({user});
+    .then(psNews => this.setState({psNews}))
+    .catch(err => console.log(err));
+
+    fetch('/api/news/games')
+    .then(res => res.json())
+    .then(games => {
+      this.setState({games})
+      // wont get the reviews until all games are returned
+      fetch('/api/news/reviews')
+        .then(res => res.json())
+        .then(psReviews => this.setState({psReviews}))
+        .catch(err => console.log(err));
+
+      //
+      var arr = [];
+      for (let index = 0; index < games.length; index++) {
+        fetch(`/api/news/reviews/${games[index].id}`) 
+        .then(res => res.json())
+        .then(psReviews => {
+          arr.push(psReviews)
+        })
+        .catch(err => console.log(err));
+      }
+      this.setState({psReviews: arr})
+      //
+
+    }
+    )
+    .catch(err => console.log(err));
+
+
 
     
     
@@ -95,6 +125,22 @@ class App extends Component {
   handleLogin = () => {
     this.setState({user: userService.getUser()})
   }
+
+  // searchGames = () => {
+  //   fetch('api/news/games/seaRch', {
+  //     method: 'POST',
+  //     headers: {'Content-Type': 'application/json'},
+  //     body: JSON.stringify({userSearch: this.state.userSearch})
+  //   })
+  //   .then(data => data.json())
+  //   .then(searchResults => {
+  //     this.setState({
+  //       searchResults: searchResults
+  //     })
+  //     this.props.history.push('/results')
+  //   })
+  //   .catch(err => console.log(err))
+  // }
   
 
 
@@ -108,17 +154,22 @@ class App extends Component {
           handleLogout={this.handleLogout}
           />
         </header>
-          
-            <Switch>
+          <Switch>
               <Route exact path='/news' render={(props) =>
-             <PlayStudioNews
+                <PlayStudioNews
                 psNews={this.state.psNews}
        
               />
               }/> 
-            
+            <Route exact path='/games' render={(props) =>
+              <PlayStudioGames
+                games={this.state.games}
+              
+                />
+              }/>
             <Route exct path='/reviews' render={(props)=>
               <PlayStudioReviews
+                games={this.state.games}
                 psReviews={this.state.psReviews}
                 />
             }/>
@@ -126,6 +177,7 @@ class App extends Component {
               <PlayStudioPage 
                 handleLogout={this.handleLogout}
                 user={this.state.user}
+                psNews={this.state.psNews}
               />
             }/>
             <Route exact path='/login' render={(props) => 
@@ -147,11 +199,7 @@ class App extends Component {
               !this.state.psNews
                 ?<p>LOADING</p>
                 :<PlayStudioNews psNews={this.state.psNews.items} />}  */}
-
-            </Switch>
-            
-
-          
+          </Switch>       
       </div>
     );
   }

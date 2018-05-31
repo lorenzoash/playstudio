@@ -1,29 +1,27 @@
 import React from 'react';
 // import NavBar from '../../components/NavBar/NavBar';
 import {Link} from 'react-router-dom'
+import './PlayStudioNews.css';
 
 const PlayStudioNews = ({psNews}) => {
-
     return (
-        
-        <ul className='PlayStudioNews'>
-        {psNews.articles ? psNews.articles.map((news, index) => {
+        <div className='row'>
+    
+        {psNews ? psNews.map((news, index) => {
             return (
+                <div className="col-sm">
                 <div key={index}>
-                   
-                    <p>{news.title}</p>
-                    <p>{news.publishedAt}</p>
-                    <p>{news.descripition}</p>
-                    <img src={news.urlToImage} />
-                    <Link to={news.url}></Link>
-                   
+                   <div className='container'>
+                    <h5>{news.title}</h5>       
                 </div>
-                
+                   <a href={news.url} target='blank'> <img className="imageNews"src={news.urlToImage} /> </a>
+                    </div>
+                </div>  
             )
         })
         : <h1>LOADING</h1>}
-        </ul>
+        </div>   
     )
 };
-
 export default PlayStudioNews;
+

@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser')
 var cors = require('cors')
-var igdb = require('igdb-api-node').default;
 
 require('dotenv').config();
 require('./config/database');
@@ -21,10 +20,11 @@ app.use(cors());
 app.use(require('./config/auth'));
 
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/news', require('./routes/api/news'));
 
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
+});
 
 var port = process.env.PORT || 3001;
 

@@ -1,12 +1,13 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 const SALT_ROUNDS = 6;
+const Game = require('./game.js')
 
 var userSchema = new mongoose.Schema({
     name: String,
     email: {type: String, require: true, lowercase: true, unique: true},
     password: String,
-    // favorites: [{ref: 'games', type: mongoose.Schema.ObjectId}]
+    favorites: [Game]
 }, {
     timestamps: true
 });

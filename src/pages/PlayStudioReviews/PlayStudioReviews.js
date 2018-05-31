@@ -1,23 +1,41 @@
 import React from 'react';
 // import NavBar from '../../components/NavBar/NavBar';
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import './PlayStudioReviews.css'
 
-const PlayStudioReviews = ({psReviews}) => {
+const PlayStudioReviews = (props) => {
     
     return (
         
         <ul className='PlayStudioReviews'>
-        {/* {psReview.s ? psReviews.s.map((reviews, index) => {
-            return ( */}
-                 <div> 
-                   
-                    <h1>GOD of WAR</h1>
-                    <h2>20th Apr, 2018 a month ago</h2>
-                    <h3>SIE Santa Monica Studio</h3>
+        {props.psReviews ? props.psReviews.map((reviews, index) => {
+            console.log(props.games);
+            
+            
+            let gameTitle = '';
+            for ( let i=0; i < props.games.length; i++) {
+                if(props.games[i].id === reviews.game) {
+                    console.log(props.games[i].id + " === " + reviews.game);
                     
+                    gameTitle = props.games[i].name
+                }
+            }
+
+            return (
+                <div key={index}>
+                   
+                    <p id="gameTitle">{gameTitle}</p>
+                    <p>{reviews.content}</p>
+                    <p>{reviews.descripition}</p>
+                 
+                    
+
                    
                 </div>
-      
+                
+            )
+        })
+        : <h1>LOADING</h1>}
         </ul>
     )
 };
