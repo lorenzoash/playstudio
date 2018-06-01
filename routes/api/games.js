@@ -2,6 +2,6 @@ const express = require('express');
 const router = express.Router();
 const gamesController = require('./../../controllers/games');
 
-router.get('/favorite/:apiId', gamesController.favorite);
+router.post('/favorites', gamesController.addToFavorites);
 
 module.exports = router;

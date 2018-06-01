@@ -4,7 +4,8 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
     signup,
-    login
+    login,
+    getFavs
 }
 
 function login(req, res) {
@@ -25,6 +26,16 @@ function signup(req, res) {
     console.log(user)
     user.save(function(err,user) {
         res.json({token: createJWT(user)});
+    });
+}
+
+function getFavs(req, res) {
+    User.findById(req.user._id).then(user => {
+        res.json(user.favorites);
+        favorites.some(noneFavs => {
+            if (noneFavs === user.favorites)
+            return '';
+        })
     });
 }
 

@@ -1,34 +1,42 @@
-import React from 'react';
+import React from "react";
 // import NavBar from '../../components/NavBar/NavBar';
-import {Link} from 'react-router-dom'
-import './PlayStudioGames.css'
+import { Link } from "react-router-dom";
+import "./PlayStudioGames.css";
 
-const PlayStudioGames = ({games}) => {
-
-    return (
-        
-        <ul className='PlayStudioGames'>
-        {games ? games.map((playGames, index) => {
-            // let coverURL;
-            // if (playGames.cover) {
-            //     const size = "cover_big";
-            //     const hash = playGames.cover.id;
-            //     coverURL =`https://images.igdb.com/igdb/image/upload/t_${size}/${hash}.jpg`
-            // } else {
-            //     coverURL = ""
-            // }
+const PlayStudioGames = ({ games, user, addToFavorite }) => {
+  return (
+    <div className="container">
+      <div className="row">
+        {games ? (
+          games.map((playGames, index) => {
             return (
+              <div className="col-sm PlayStudioGames">
                 <div key={index}>
-                    <img className='PlayGames' src={ playGames.cover ? playGames.cover.url.replace("t_thumb", "t_cover_big") : "https://bit.ly/2LIZDag" } />
-                    <h5>{playGames.name}</h5>
-                    <p>{playGames.rating}</p>
-                
+                  <Link to={`/games/${playGames.id}`}>
+                    {" "}
+                    <img
+                      className="PlayGames"
+                      src={
+                        playGames.cover
+                          ? playGames.cover.url.replace(
+                              "t_thumb",
+                              "t_cover_big"
+                            )
+                          : "https://bit.ly/2LIZDag"
+                      }
+                    />
+                  </Link>
+                  <p>{playGames.name}</p>
                 </div>
-            )
-        })
-        : <h1>LOADING</h1>}
-        </ul>
-    )
+              </div>
+            );
+          })
+        ) : (
+          <h1>LOADING</h1>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default PlayStudioGames;

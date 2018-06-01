@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 var gameSchema = new mongoose.Schema({
     title: String,
-    imageUrl: String,
+    cover: String,
     apiId: String,
     description: String,
     rating: String
 });
 
-module.exports = gameSchema
+module.exports =  gameSchema

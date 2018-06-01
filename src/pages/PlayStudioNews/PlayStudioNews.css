@@ -1,7 +1,7 @@
 .imageNews {
     height: 282px;
     width: 475px; 
-  
+    border-radius: 20px;
 }
 /* .column {
     float: left;

@@ -14,13 +14,13 @@ router.get('/', function(req, res){
 
 router.get('/games', function(req, res){
     client.games({
-        fields: 'id,name,popularity,rating,aggregated_rating,cover',
+        fields: 'id,platforms,name,popularity,aggregated_rating,cover,summary',
         filters: {
             'release_dates.date-gt': '2017-12-31',    
         },
-        limit: 25,
+        limit: 50,
         order: 'popularity:desc',
-        platform: 'playstation 4'
+      
         
     }).then(data => {
         console.log(data);

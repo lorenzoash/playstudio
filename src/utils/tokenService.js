@@ -3,8 +3,8 @@ function setToken(token) {
         localStorage.setItem('token', token);
     } else {
         localStorage.removeItem('token');
-    }
-}
+    };
+};
 
 function getToken() {
     var token = localStorage.getItem('token');
@@ -16,16 +16,16 @@ function getToken() {
         }
     }
     return token;
-}
+};
 
 function removeToken() {
     localStorage.removeItem('token')
-}
+};
 
 function getUserFromToken() {
     var token = getToken();
     return token ? JSON.parse(atob(token.split('.')[1])).user : null;
-}
+};
 
 export default {
     setToken,
