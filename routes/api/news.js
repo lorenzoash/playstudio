@@ -16,9 +16,9 @@ router.get('/games', function(req, res){
     client.games({
         fields: 'id,platforms,name,popularity,aggregated_rating,cover,summary',
         filters: {
-            'release_dates.date-gt': '2017-12-31',    
+            'release_dates.date-gt': '2017-01-01',    
         },
-        limit: 50,
+        limit: 100,
         order: 'popularity:desc',
       
         
