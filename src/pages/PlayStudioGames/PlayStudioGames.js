@@ -10,8 +10,8 @@ const PlayStudioGames = ({ games, user, addToFavorite }) => {
         {games ? (
           games.map((playGames, index) => {
             return (
-              <div className="col-sm PlayStudioGames">
-                <div key={index}>
+              <div key={index} className="col-sm PlayStudioGames">
+                <div>
                   <Link to={`/games/${playGames.id}`}>
                     {" "}
                     <img

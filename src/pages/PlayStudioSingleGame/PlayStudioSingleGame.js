@@ -5,8 +5,8 @@ import "./PlayStudioSingleGame.css";
 
 const PlayStudioSingleGame = ({ game, user, addToFavorite }) => {
   return game ? (
-    <div>
-      <h1 className="title">{game.name}</h1>
+    <div className="singleGameRating">
+        <h1 className="title">{game.name}</h1>
       <img
         className="SingleGame"
         src={
@@ -24,7 +24,7 @@ const PlayStudioSingleGame = ({ game, user, addToFavorite }) => {
         </div>
       </div>
       {user &&
-        !user.favorites.some(f => f.apiId == game.id) && (
+        !user.favorites.some(f => f.apiId === game.id.toString()) && (
           <div className="btn btn-danger" onClick={() => addToFavorite(game)}>
             {" "}
             Favorite

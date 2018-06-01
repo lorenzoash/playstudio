@@ -9,8 +9,8 @@ const PlayStudioFavs = ({games, user, favorites}) => {
             <div className="row">
                 {favorites.length ? favorites.map((fav, index) => {
                     return (
-                        <div className='col-sm PlayStudioGames'>
-                            <div key={index}>
+                        <div key={index} className='col-sm PlayStudioGames'>
+                            <div>
                                 <Link to={`/games/${fav.apiId}`}> <img className='PlayGames' src={fav.cover ? fav.cover.replace("t_thumb", "t_cover_big") : "https://bit.ly/2LIZDag"} /></Link>
                                 <p>{fav.name}</p>
                             </div>

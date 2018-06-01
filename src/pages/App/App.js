@@ -31,7 +31,6 @@ class App extends Component {
       games: [],
       userSearch: "",
       searchGames: [],
-      favorites: []
     };
   }
   componentDidMount() {
@@ -61,16 +60,7 @@ class App extends Component {
           .then(psReviews => this.setState({ psReviews }))
           .catch(err => console.log(err));
 
-        var arr = [];
-        for (let index = 0; index < games.length; index++) {
-          fetch(`/api/news/reviews/${games[index].id}`)
-            .then(res => res.json())
-            .then(psReviews => {
-              arr.push(psReviews);
-            })
-            .catch(err => console.log(err));
-        }
-        this.setState({ psReviews: arr });
+       
       })
       .catch(err => console.log(err));
   }
@@ -166,7 +156,7 @@ class App extends Component {
             exact
             path="/favorites"
             render={props => (
-              <PlayStudioFavs favorites={this.state.user.favorites} />
+              <PlayStudioFavs favorites={this.state.user ? this.state.user.favorites : []} />
             )}
           />
           <Route

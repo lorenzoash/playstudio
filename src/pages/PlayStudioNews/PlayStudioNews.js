@@ -6,8 +6,8 @@ const PlayStudioNews = ({psNews}) => {
         <div className='row'>
         {psNews ? psNews.map((news, index) => {
             return (
-                <div className="col-sm">
-                <div key={index}>
+                <div key={index} className="col-sm">
+                <div>
                    <div className='container'>
                     <p>{news.title}</p>       
                 </div>
