@@ -1,6 +1,4 @@
 import React from "react";
-import PlayStudioGames from "../../pages/PlayStudioGames/PlayStudioGames";
-import { Link } from "react-router-dom";
 import "./PlayStudioSingleGame.css";
 
 const PlayStudioSingleGame = ({ game, user, addToFavorite }) => {
@@ -13,16 +11,16 @@ const PlayStudioSingleGame = ({ game, user, addToFavorite }) => {
           game.cover
             ? game.cover.url.replace("t_thumb", "t_cover_big_2x")
             : "https://bit.ly/2LIZDag"
-        }
+        } alt="..."
       />
-      <div className="c100 p25">
+      {/* <div className="c100 p25">
         <div className="c100" />
         <span className="circle">{game.aggregated_rating}</span>
         <div className="slice">
           <div className="bar" />
           <div className="fill" />
         </div>
-      </div>
+      </div> */}
       {user &&
         !user.favorites.some(f => f.apiId === game.id.toString()) && (
           <div className="btn btn-danger" onClick={() => addToFavorite(game)}>

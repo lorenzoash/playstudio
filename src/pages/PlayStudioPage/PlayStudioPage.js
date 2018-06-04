@@ -8,7 +8,7 @@ import './PlayStudioPage.css'
 const PlayStudio = (props) => {
     return (
         <div className="PlayStudio">
-            <img className='imageHeader' src='https://www.igdb.com/b/e3-discover.png'>
+            <img className='imageHeader' src='https://www.igdb.com/b/e3-discover.png' alt="...">
             </img>
             <h2>Live News</h2>
                 <PlayStudioNews

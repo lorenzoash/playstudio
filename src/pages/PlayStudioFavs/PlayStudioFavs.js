@@ -11,7 +11,7 @@ const PlayStudioFavs = ({games, user, favorites}) => {
                     return (
                         <div key={index} className='col-sm PlayStudioGames'>
                             <div>
-                                <Link to={`/games/${fav.apiId}`}> <img className='PlayGames' src={fav.cover ? fav.cover.replace("t_thumb", "t_cover_big") : "https://bit.ly/2LIZDag"} /></Link>
+                                <Link to={`/games/${fav.apiId}`}> <img className='PlayGames' src={fav.cover ? fav.cover.replace("t_thumb", "t_cover_big") : "https://bit.ly/2LIZDag"} alt="..." /></Link>
                                 <p>{fav.name}</p>
                             </div>
                         </div>

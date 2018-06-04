@@ -18,35 +18,20 @@ router.get('/games', function(req, res){
         filters: {
             'release_dates.date-gt': '2017-01-01',    
         },
-        limit: 100,
-        order: 'popularity:desc',
-      
-        
+        limit: 10,
+        order: 'popularity:desc'
     }).then(data => {
         console.log(data);
         
-        // for (let key in data.body) {
-        //     let currGame = data.body[key];
-        //     let cloudinary_id = currGame.screenshots[0].cloudinary_id;
-        //     currGame.firstScreenshot =  client.image({ cloudinary_id: cloudinary_id } , 'screenshot_med', 'jpg' );
-
-        // } 
+     
         res.json(data.body);
     }).catch(error => {
-        throw error;
+        console.log(error);
+        res.json({err: error});
     });
 });
 
-router.get('/reviews', function(req,res) {
-    client.reviews({
-        fields: '*',
-        limit: 25
-    }).then(data => {
-        res.json(data.body);
-    }).catch(error => {
-        throw error;
-    });
-});
+
 
 
 module.exports = router

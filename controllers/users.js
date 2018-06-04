@@ -32,10 +32,6 @@ function signup(req, res) {
 function getFavs(req, res) {
     User.findById(req.user._id).then(user => {
         res.json(user.favorites);
-        favorites.some(noneFavs => {
-            if (noneFavs === user.favorites)
-            return '';
-        })
     });
 }
 

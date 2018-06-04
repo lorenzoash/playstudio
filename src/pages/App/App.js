@@ -4,7 +4,6 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import igdb from "igdb-api-node";
 import "./App.css";
 import LoginPage from "../LoginPage/LoginPage";
 import PlayStudioPage from "../../pages/PlayStudioPage/PlayStudioPage";
@@ -13,7 +12,7 @@ import SignupPage from "../SignupPage/SignupPage";
 import API from "./../../api/api.js";
 import PlayStudioNews from "../../pages/PlayStudioNews/PlayStudioNews";
 import NavBar from "../../components/NavBar/NavBar";
-import PlayStudioReviews from "../../pages/PlayStudioReviews/PlayStudioReviews";
+// import PlayStudioReviews from "../../pages/PlayStudioReviews/PlayStudioReviews";
 import PlayStudioGames from "../../pages/PlayStudioGames/PlayStudioGames";
 import PlayStudioSingleGame from "../../pages/PlayStudioSingleGame/PlayStudioSingleGame";
 import tokenService from "../../utils/tokenService";
@@ -170,7 +169,7 @@ class App extends Component {
               />
             )}
           />
-          <Route
+          {/* <Route
             exct
             path="/reviews"
             render={props => (
@@ -179,7 +178,7 @@ class App extends Component {
                 psReviews={this.state.psReviews}
               />
             )}
-          />
+          /> */}
           <Route
             exact
             path="/"

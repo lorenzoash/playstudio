@@ -23,7 +23,7 @@ const PlayStudioGames = ({ games, user, addToFavorite }) => {
                               "t_cover_big"
                             )
                           : "https://bit.ly/2LIZDag"
-                      }
+                      } alt="..."
                     />
                   </Link>
                   <p>{playGames.name}</p>

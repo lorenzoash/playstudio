@@ -11,7 +11,7 @@ const PlayStudioNews = ({psNews}) => {
                    <div className='container'>
                     <p>{news.title}</p>       
                 </div>
-                   <a href={news.url} target='blank'> <img className="imageNews"src={news.urlToImage} /> </a>
+                   <a href={news.url} target='blank'> <img className="imageNews"src={news.urlToImage} alt="..." /> </a>
                     </div>
                 </div>  
             )})
