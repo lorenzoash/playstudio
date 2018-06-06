@@ -18,7 +18,7 @@ router.get('/games', function(req, res){
         filters: {
             'release_dates.date-gt': '2017-01-01',    
         },
-        limit: 10,
+        limit: 25,
         order: 'popularity:desc'
     }).then(data => {
         console.log(data);
