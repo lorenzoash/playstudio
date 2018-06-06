@@ -30,6 +30,7 @@ class App extends Component {
       games: [],
       userSearch: "",
       searchGames: [],
+      
     };
   }
   componentDidMount() {
@@ -41,7 +42,9 @@ class App extends Component {
         }
       })
         .then(res => res.json())
-        .then(favs => (this.state.user.favorites = favs));
+        .then(favs => (this.state.user.favorites = favs))
+        .catch(err => console.log(err))
+        
     }
 
     fetch("/api/news")
